@@ -1,13 +1,14 @@
 {
   "name": "openlist-back-work",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "dev:pages": "cd pages && npm run dev",
-    "build:pages": "cd pages && npm run build",
-    "deploy": "npm run build:pages && wrangler deploy --minify",
+    "build:pages": "cd pages && npm install && npm run build",
+    "deploy": "prisma generate && npm run build:pages && wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
-    "test": "ts-node  tests.ts",
+    "test": "ts-node tests.ts",
     "prisma:generate": "prisma generate",
     "postinstall": "prisma generate"
   },
